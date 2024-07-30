@@ -1,36 +1,41 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-      variant: primary
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+title: Software Testing
 ---
+ 
+# About Unit Testing
+ 
+I have learned that testing is really, truly important - you are doing yourself and others a disservice by not writing tests! It is current and future proofing. It is, in of itself, documentation.
+ 
+ 
+# API Testing with Alba
+ 
+```csharp
+ 
+using Alba;
+ 
+namespace HelpDesk.Tests.Software;
+public class GettingSoftware
+{
+    // Test that we can make an HTTP GET requests to /api/software
+ 
+    [Fact]
+    public async Task CanGetSoftware()
+    {
+        var host = await AlbaHost.For<Program>();
+ 
+        await host.Scenario(api =>
+        {
+            api.Get.Url("/api/software");
+            api.StatusCodeShouldBeOk();
+        });
+ 
+ 
+    }
+}
+```
+ 
+Write what you understand about this code. What is Alba? Where did that come from? What is `Program`?
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## Next steps
-
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+This code entails a single test. I think that Alba is an internal place to send HTTP requests, perhaps some sort of dashboard.
+Since Alba is in a using statement, it seems to be a separate software which is in the files, likely intentionally imported to test this.
+The 'Program' seems like it is something that Alba is expecting to see when set up. My best guess is that Alba shows you what an HTTP request looks like and what it returns in a dashboard.
