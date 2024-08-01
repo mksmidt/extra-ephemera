@@ -53,3 +53,22 @@ System tests - testing our API, not the Angular app
 Unit tests - Test individual units of functionality within a system
 
 White box tests - break encapsulation, test HOW code does things, not WHAT it does
+
+App devs - very specific, business focused; organized around business functionality
+
+
+System programmers - very general purpose - operating systems, databases, network protocols, etc.
+
+What makes good code?
+    - Does what it is supposed to do.
+    - Easy to change.
+
+
+Unit tests at the very minimum CANNOT access:
+    - the file system
+    - databases
+    - network
+    - the clock
+
+WHY?
+    - They are EXTERNAL. Any failures in testing may be because of these things instead of your code.
